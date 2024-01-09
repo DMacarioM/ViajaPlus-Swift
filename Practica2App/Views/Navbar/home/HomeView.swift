@@ -146,7 +146,7 @@ struct HomeView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
             }
-            .navigationBarTitle("Pick a city")
+            .navigationBarTitle("ViajaPlus")
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(errorText), dismissButton: .default(Text("OK")))
             }
