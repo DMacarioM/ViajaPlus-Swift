@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		449A70782B4D7DAA00F28590 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A70772B4D7DAA00F28590 /* Ticket.swift */; };
+		449A707A2B4D7DCC00F28590 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A70792B4D7DCC00F28590 /* User.swift */; };
+		44C6118A2B4CBFBB0068F9DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611892B4CBFBB0068F9DD /* HomeView.swift */; };
+		44C6118E2B4CC1B30068F9DD /* MyTripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */; };
+		44C611902B4CC1C60068F9DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6118F2B4CC1C60068F9DD /* ProfileView.swift */; };
+		44C611942B4CC2150068F9DD /* SelectRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611932B4CC2150068F9DD /* SelectRouteView.swift */; };
+		44C611972B4CCEC50068F9DD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611962B4CCEC50068F9DD /* Route.swift */; };
+		44C6119A2B4CCF0C0068F9DD /* RoutesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611992B4CCF0C0068F9DD /* RoutesService.swift */; };
+		44C6119C2B4CD26C0068F9DD /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6119B2B4CD26C0068F9DD /* TicketService.swift */; };
+		44C6119E2B4CD4CA0068F9DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C6119D2B4CD4CA0068F9DD /* GoogleService-Info.plist */; };
 		FCC121D62B1CF5E6002D0BF8 /* Practica2AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */; };
 		FCC121D82B1CF5E6002D0BF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */; };
 		FCC121DA2B1CF5E6002D0BF8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D92B1CF5E6002D0BF8 /* Item.swift */; };
@@ -18,7 +28,6 @@
 		FCC122042B1CF931002D0BF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC122032B1CF931002D0BF8 /* LaunchScreen.storyboard */; };
 		FCC122062B1D0603002D0BF8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC122052B1D0603002D0BF8 /* MainView.swift */; };
 		FCC122082B1D08FE002D0BF8 /* MisClases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC122072B1D08FE002D0BF8 /* MisClases.swift */; };
-		FCC1220A2B1D14D5002D0BF8 /* Readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FCC122092B1D14D5002D0BF8 /* Readme.rtf */; };
 		FCC1220D2B1D17A2002D0BF8 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC1220C2B1D17A2002D0BF8 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		449A70772B4D7DAA00F28590 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		449A70792B4D7DCC00F28590 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		44C611892B4CBFBB0068F9DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsView.swift; sourceTree = "<group>"; };
+		44C6118F2B4CC1C60068F9DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		44C611932B4CC2150068F9DD /* SelectRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRouteView.swift; sourceTree = "<group>"; };
+		44C611962B4CCEC50068F9DD /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		44C611992B4CCF0C0068F9DD /* RoutesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesService.swift; sourceTree = "<group>"; };
+		44C6119B2B4CD26C0068F9DD /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
+		44C6119D2B4CD4CA0068F9DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCC121D22B1CF5E6002D0BF8 /* Practica2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practica2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practica2AppApp.swift; sourceTree = "<group>"; };
 		FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -54,7 +73,6 @@
 		FCC122032B1CF931002D0BF8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCC122052B1D0603002D0BF8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FCC122072B1D08FE002D0BF8 /* MisClases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisClases.swift; sourceTree = "<group>"; };
-		FCC122092B1D14D5002D0BF8 /* Readme.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Readme.rtf; path = ../../Practica1/Practica1/Readme.rtf; sourceTree = "<group>"; };
 		FCC1220B2B1D14D8002D0BF8 /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		FCC1220C2B1D17A2002D0BF8 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +102,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44C611852B4C540F0068F9DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44C611872B4C545D0068F9DD /* Navbar */,
+				44C611862B4C54210068F9DD /* Login */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		44C611862B4C54210068F9DD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1220C2B1D17A2002D0BF8 /* RegisterView.swift */,
+				FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		44C611872B4C545D0068F9DD /* Navbar */ = {
+			isa = PBXGroup;
+			children = (
+				44C6118C2B4CC1720068F9DD /* Profile */,
+				44C6118B2B4CC1620068F9DD /* MyTrips */,
+				44C611882B4C54740068F9DD /* home */,
+			);
+			path = Navbar;
+			sourceTree = "<group>";
+		};
+		44C611882B4C54740068F9DD /* home */ = {
+			isa = PBXGroup;
+			children = (
+				44C611892B4CBFBB0068F9DD /* HomeView.swift */,
+				44C611932B4CC2150068F9DD /* SelectRouteView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		44C6118B2B4CC1620068F9DD /* MyTrips */ = {
+			isa = PBXGroup;
+			children = (
+				44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */,
+			);
+			path = MyTrips;
+			sourceTree = "<group>";
+		};
+		44C6118C2B4CC1720068F9DD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				44C6118F2B4CC1C60068F9DD /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		44C611952B4CCEB10068F9DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44C611962B4CCEC50068F9DD /* Route.swift */,
+				449A70772B4D7DAA00F28590 /* Ticket.swift */,
+				449A70792B4D7DCC00F28590 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44C611982B4CCEFC0068F9DD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				44C611992B4CCF0C0068F9DD /* RoutesService.swift */,
+				44C6119B2B4CD26C0068F9DD /* TicketService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		FCC121C92B1CF5E6002D0BF8 = {
 			isa = PBXGroup;
 			children = (
@@ -107,15 +197,17 @@
 		FCC121D42B1CF5E6002D0BF8 /* Practica2App */ = {
 			isa = PBXGroup;
 			children = (
+				44C611982B4CCEFC0068F9DD /* Services */,
+				44C611952B4CCEB10068F9DD /* Models */,
+				44C611852B4C540F0068F9DD /* Views */,
 				FCC1220B2B1D14D8002D0BF8 /* Readme.rtf */,
 				FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */,
 				FCC122052B1D0603002D0BF8 /* MainView.swift */,
 				FCC122072B1D08FE002D0BF8 /* MisClases.swift */,
-				FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */,
-				FCC1220C2B1D17A2002D0BF8 /* RegisterView.swift */,
 				FCC122032B1CF931002D0BF8 /* LaunchScreen.storyboard */,
 				FCC121D92B1CF5E6002D0BF8 /* Item.swift */,
 				FCC121DB2B1CF5E7002D0BF8 /* Assets.xcassets */,
+				44C6119D2B4CD4CA0068F9DD /* GoogleService-Info.plist */,
 				FCC121DD2B1CF5E7002D0BF8 /* Preview Content */,
 			);
 			path = Practica2App;
@@ -142,7 +234,6 @@
 			children = (
 				FCC121F22B1CF5E7002D0BF8 /* Practica2AppUITests.swift */,
 				FCC121F42B1CF5E7002D0BF8 /* Practica2AppUITestsLaunchTests.swift */,
-				FCC122092B1D14D5002D0BF8 /* Readme.rtf */,
 			);
 			path = Practica2AppUITests;
 			sourceTree = "<group>";
@@ -235,6 +326,9 @@
 				Base,
 			);
 			mainGroup = FCC121C92B1CF5E6002D0BF8;
+			packageReferences = (
+				44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = FCC121D32B1CF5E6002D0BF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,8 +346,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC122042B1CF931002D0BF8 /* LaunchScreen.storyboard in Resources */,
+				44C6119E2B4CD4CA0068F9DD /* GoogleService-Info.plist in Resources */,
 				FCC121DF2B1CF5E7002D0BF8 /* Preview Assets.xcassets in Resources */,
-				FCC1220A2B1D14D5002D0BF8 /* Readme.rtf in Resources */,
 				FCC121DC2B1CF5E7002D0BF8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,11 +374,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC121D82B1CF5E6002D0BF8 /* LoginView.swift in Sources */,
+				44C6119C2B4CD26C0068F9DD /* TicketService.swift in Sources */,
+				44C6119A2B4CCF0C0068F9DD /* RoutesService.swift in Sources */,
+				44C611902B4CC1C60068F9DD /* ProfileView.swift in Sources */,
+				44C611972B4CCEC50068F9DD /* Route.swift in Sources */,
+				449A70782B4D7DAA00F28590 /* Ticket.swift in Sources */,
 				FCC122062B1D0603002D0BF8 /* MainView.swift in Sources */,
 				FCC121DA2B1CF5E6002D0BF8 /* Item.swift in Sources */,
+				449A707A2B4D7DCC00F28590 /* User.swift in Sources */,
+				44C611942B4CC2150068F9DD /* SelectRouteView.swift in Sources */,
 				FCC1220D2B1D17A2002D0BF8 /* RegisterView.swift in Sources */,
 				FCC121D62B1CF5E6002D0BF8 /* Practica2AppApp.swift in Sources */,
+				44C6118A2B4CBFBB0068F9DD /* HomeView.swift in Sources */,
 				FCC122082B1D08FE002D0BF8 /* MisClases.swift in Sources */,
+				44C6118E2B4CC1B30068F9DD /* MyTripsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +713,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = FCC121CA2B1CF5E6002D0BF8 /* Project object */;
 }

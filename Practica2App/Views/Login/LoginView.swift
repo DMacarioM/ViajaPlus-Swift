@@ -7,9 +7,11 @@
 
 import SwiftUI
 import SwiftData
+//import FirebaseAuth
 
 struct LoginView: View {
     @Binding var isLoggedIn: Bool
+    @Binding var userLogged: Usuario
     @State private var showAlert = false
     @State private var errorText = ""
     //@Environment(\.dismiss) var dismiss
@@ -40,23 +42,10 @@ struct LoginView: View {
                         
                         
                         Button("Login"){
-                            //Comprobar Strings
-                            //Auth user
-                            wrongPassword=0
-                            wrongUsername=0
-                            if(!username.isEmpty){
-                                if(!password.isEmpty){
-                                    authenticateUser(username: username, password: password)
-                                }else{
-                                    showAlert = true
-                                    errorText = "Empty Password"
-                                    wrongPassword = 2
-                                }
-                            }else{
-                                showAlert = true
-                                errorText = "Empty Username"
-                                wrongUsername = 2
-                            }
+                            
+                            performLogin()
+
+                            
                         }.foregroundColor(.white).frame(width: 159.0,height: 50).background(Color.blue).cornerRadius(10).alert(isPresented: $showAlert) {
                             Alert(title: Text("Error"), message: Text("\(errorText)"), dismissButton: .default(Text("OK")))
                         }
@@ -66,12 +55,37 @@ struct LoginView: View {
         }.navigationBarHidden(true)
     }
     
-    func authenticateUser(username:String, password:String){
-        if(username.lowercased() == "admin") {
+    
+    func performLogin(){
+        //Comprobar Strings
+        //Auth user
+        wrongPassword=0
+        wrongUsername=0
+        
+        
+        
+        if username.isEmpty {
+            showAlert = true
+            errorText = "Empty Email"
+            wrongUsername = 2
+        } else if password.isEmpty {
+            showAlert = true
+            errorText = "Empty Password"
+            wrongPassword = 2
+        } else {
+            authenticateUser(email: username, password: password)
+        }
+    }
+    
+    func authenticateUser(email:String, password:String){
+        if(email.lowercased() == "admin") {
             wrongUsername = 0
             if(password.lowercased() == "admin"){
                 wrongPassword = 0
+                userLogged.nombre = username
+                userLogged.contraseña = password
                 isLoggedIn = true
+
                 //dismiss()
             }else{
                 //alert
@@ -84,10 +98,29 @@ struct LoginView: View {
             errorText = "Incorrect Username"
             wrongUsername = 2
         }
+        
+        
+        /**
+         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                    if let error = error {
+                        self.showAlert = true
+                        self.errorText = error.localizedDescription
+                        // Aquí puedes agregar lógica para manejar tipos específicos de errores
+                    } else {
+                        // Manejo del éxito del inicio de sesión
+                        guard let user = authResult?.user else { return }
+                        self.userLogged = Usuario(nombre: user.email ?? "No Email", contraseña: "")
+                        self.isLoggedIn = true
+                    }
+                }
+         */
     }
 }
 
+/**
+ 
 #Preview {
-    LoginView(isLoggedIn: .constant(false))
+    LoginView(isLoggedIn: .constant(false), userLogged: .constant(nil)    
         .modelContainer(for: Item.self, inMemory: true)
 }
+ */
