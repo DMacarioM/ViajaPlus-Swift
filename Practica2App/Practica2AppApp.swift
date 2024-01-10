@@ -7,13 +7,21 @@
 
 import SwiftUI
 import SwiftData
-//import Firebase
+import Firebase
 
+// no changes in your AppDelegate class
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
 
 @main
 struct Practica2AppApp: App {
     init(){
-  //      FirebaseApp().configure()
+        // inject into SwiftUI life-cycle via adaptor !!!
+           @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     }
     
     var sharedModelContainer: ModelContainer = {
@@ -36,3 +44,4 @@ struct Practica2AppApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+

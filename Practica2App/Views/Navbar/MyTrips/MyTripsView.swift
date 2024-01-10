@@ -15,5 +15,5 @@ struct MyTripsView: View {
 }
 
 #Preview {
-    ProfileView()
+    MyTripsView()
 }

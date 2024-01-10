@@ -25,6 +25,15 @@ class Usuario {
     var tema: Tema  // Tema de la interfaz de usuario del usuario
     var estado: Estado  // Estado del usuario
 
+    // Inicializador por defecto
+        init() {
+            self.nombre = "David"
+            self.email = "David@gmail.com"
+            self.contraseña = "David"
+            self.estado = .ACTIVO
+            self.tema = .DIA
+        }
+    
     // Inicializador de la clase Usuario
     init(nombre: String, email: String, contraseña: String) {
         self.nombre = nombre

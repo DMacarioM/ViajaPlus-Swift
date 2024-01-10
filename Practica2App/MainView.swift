@@ -9,15 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    @State private var isLoggedIn = true //TODO: cambiar a false o leer de systempreferences
-    @State private var userLogger = Usuario(nombre: "Ronald", email: "Ris@example.com", contraseña: "123456")
+    @State private var isLoggedIn = false //Se modifica con @Binding desde el login y register
+    //TODO: ? cambiar a false o leer de systempreferences 
+    @State private var userLogged = User(userId: "", email: "", password: "", displayName: "", profilePictureUrl: nil)
 
     
     var body: some View {
         if isLoggedIn {
             TabView {
                         
-                HomeView(userLogged: $userLogger)
+                HomeView(userLogged: $userLogged)
                             .tabItem {
                                 Label("Home", systemImage: "list.dash")
                                     .foregroundColor(.white).tint(.gray)
@@ -29,7 +30,7 @@ struct MainView: View {
                                     .foregroundColor(.white).tint(.gray)
                             }
                 
-                        ProfileView()
+                        ProfileView(userLogged: $userLogged)
                             .tabItem{
                                 Label("Profile", systemImage: "square.and.pencil")
                                     .foregroundColor(.white).tint(.gray)
@@ -37,13 +38,9 @@ struct MainView: View {
                     }
            
         } else {
-            LoginView(isLoggedIn: $isLoggedIn, userLogged: $userLogger)
+            LoginView(isLoggedIn: $isLoggedIn, userLogged: $userLogged)
         }
     }
-    
-    
-    
-    
 }
 
 

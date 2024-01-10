@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Binding var userLogged: User
     var body: some View {
-        Text("Hello, Profile!")
+        Text("Hello,\(userLogged.displayName) !")
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(userLogged: .constant(User(userId: "", email: "", password: "", displayName: "Juan", profilePictureUrl: nil)))
 }

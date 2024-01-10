@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
-    @Binding var userLogged: Usuario
+    @Binding var userLogged: User
 
     let cities = ["Murcia", "Alicante", "Valencia", "Granada"]
     @State private var selectedStartCity = "Murcia"

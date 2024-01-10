@@ -7,21 +7,30 @@
 
 import SwiftUI
 import SwiftData
-//import FirebaseAuth
+import FirebaseAuth
+import Firebase
+
 
 struct LoginView: View {
-    @Binding var isLoggedIn: Bool
-    @Binding var userLogged: Usuario
     @State private var showAlert = false
     @State private var errorText = ""
     //@Environment(\.dismiss) var dismiss
     @State private var selection: Int? = nil
     
-    @State private var username = "" //(TODO: Singleton)
+    @State private var email = ""
     @State private var password = ""
-    @State private var wrongUsername = 0
+    
+    @Binding var isLoggedIn: Bool
+    @Binding var userLogged: User //Singleton
+    
+    //Variables para mostrar errores
+    @State private var wrongEmail = 0
     @State private var wrongPassword = 0
-    @State private var showingLoginScreen = false
+    
+    
+    @State private var showRegisterView = false
+    
+    let db = Firestore.firestore()
     
     var body: some View {
         NavigationView{
@@ -31,21 +40,22 @@ struct LoginView: View {
                 Circle().scale(1.35).foregroundColor(.white)
                 VStack{
                     Text("Login").font(.largeTitle).bold().padding()
-                    TextField("Username", text: $username).padding().frame(width: 300,height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red,width: CGFloat(wrongUsername))
+                    TextField("Email", text: $email).padding().frame(width: 300,height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red,width: CGFloat(wrongEmail))
                     SecureField("Password", text: $password).padding().frame(width: 300,height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red,width: CGFloat(wrongPassword))
                     
                     HStack{
-                        
-                        NavigationLink(destination: RegisterView()) {
-                            Text("Register")
-                        }.foregroundColor(.white).frame(width: 150.0,height: 50).background(Color.blue).cornerRadius(10)
-                        
+                        Button(action: {
+                                    // Muestra la vista de registro
+                                    self.showRegisterView = true
+                                }){
+                                    Text("Register")
+                                }.foregroundColor(.white).frame(width: 150.0,height: 50).background(Color.blue).cornerRadius(10)
+                                .sheet(isPresented: $showRegisterView) {
+                                    RegisterView(isLoggedIn: $isLoggedIn, userLogged: $userLogged)
+                                }
                         
                         Button("Login"){
-                            
                             performLogin()
-
-                            
                         }.foregroundColor(.white).frame(width: 159.0,height: 50).background(Color.blue).cornerRadius(10).alert(isPresented: $showAlert) {
                             Alert(title: Text("Error"), message: Text("\(errorText)"), dismissButton: .default(Text("OK")))
                         }
@@ -60,67 +70,72 @@ struct LoginView: View {
         //Comprobar Strings
         //Auth user
         wrongPassword=0
-        wrongUsername=0
+        wrongEmail=0
         
         
         
-        if username.isEmpty {
+        if email.isEmpty {
             showAlert = true
             errorText = "Empty Email"
-            wrongUsername = 2
+            wrongEmail = 2
         } else if password.isEmpty {
             showAlert = true
             errorText = "Empty Password"
             wrongPassword = 2
         } else {
-            authenticateUser(email: username, password: password)
+            authenticateUser(email: email, password: password)
         }
     }
     
     func authenticateUser(email:String, password:String){
-        if(email.lowercased() == "admin") {
-            wrongUsername = 0
-            if(password.lowercased() == "admin"){
-                wrongPassword = 0
-                userLogged.nombre = username
-                userLogged.contraseña = password
-                isLoggedIn = true
-
-                //dismiss()
-            }else{
-                //alert
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                self.showAlert = true
+                self.errorText = error.localizedDescription
+                // Aquí puedes agregar lógica para manejar tipos específicos de errores
+                
                 showAlert = true
-                errorText = "Incorrect Password"
-                wrongPassword = 2
-            }
-        }else{
-            showAlert = true
-            errorText = "Incorrect Username"
-            wrongUsername = 2
-        }
-        
-        
-        /**
-         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                    if let error = error {
-                        self.showAlert = true
-                        self.errorText = error.localizedDescription
-                        // Aquí puedes agregar lógica para manejar tipos específicos de errores
-                    } else {
-                        // Manejo del éxito del inicio de sesión
-                        guard let user = authResult?.user else { return }
-                        self.userLogged = Usuario(nombre: user.email ?? "No Email", contraseña: "")
-                        self.isLoggedIn = true
+                errorText = "Error en la autenticación"
+            } else {
+                // Manejo del éxito del inicio de sesión
+                guard let user = authResult?.user else { return }
+                self.isLoggedIn = true
+                
+                //Acceso a firebase Firestore para traer los datos del User
+                db.collection("Users").whereField("userId", isEqualTo: user.uid)
+                    .getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error obteniendo documentos: \(err)")
+                            showAlert = true
+                            errorText = "Error al cargar el Usuario"
+                            
+                        } else {
+                            for document in querySnapshot!.documents {
+                                print("\(document.documentID) => \(document.data())")
+                                let data = document.data()
+                                
+                                if let userId = data["userId"] as? String,
+                                   let email = data["email"] as? String,
+                                   let displayName = data["displayName"] as? String,
+                                   let profilePictureUrl = data["profilePictureUrl"] as? String {
+                                    self.userLogged = User(userId: userId, email: email, password: "", displayName: displayName, profilePictureUrl: profilePictureUrl)
+                                }
+                                //TODO: Guardar el usuario en Singleton
+                                //saveUserSingleton(User:user)
+                                
+                                self.isLoggedIn=true
+                                break
+                            }
+                        }
                     }
-                }
-         */
+            }
+        }
     }
 }
 
-/**
  
 #Preview {
-    LoginView(isLoggedIn: .constant(false), userLogged: .constant(nil)    
+    LoginView(isLoggedIn: .constant(false), userLogged: .constant(User(userId: "", email: "String", password: "String", displayName: "String", profilePictureUrl: nil)))
         .modelContainer(for: Item.self, inMemory: true)
 }
- */
+ 
