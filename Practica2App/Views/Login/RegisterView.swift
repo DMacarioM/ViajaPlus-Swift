@@ -62,7 +62,7 @@ struct RegisterView: View {
                             }
                             // Check if the username is valid
                             else if (!usernameIsValid(username: username)) {
-                                self.errorText = "Invalid username"
+                                self.errorText = "Invalid username, use capital and lowercase letter and number"
                                 self.showAlert = true
                                 self.wrongUsername = 1
                             }
@@ -75,7 +75,7 @@ struct RegisterView: View {
                             }
                             // Check if the password is valid
                             else if(!passwordIsValid(password: password)){
-                                self.errorText = "Password is invalid"
+                                self.errorText = "Password is invalid, more than 5 characters"
                                 self.showAlert = true
                                 self.wrongPassword = 1
                                 self.wrongEmail = 0
@@ -123,12 +123,16 @@ struct RegisterView: View {
                     
                     let user = User(userId: result.user.uid, email: result.user.email ?? email, password: password, displayName: username, profilePictureUrl: nil)
                     
-                    //TODO: Guardar el usuario en singleton
-                    //TODO: Establecer el isLoggedIn a true para el MainView/Singleton
-                    //saveUserSingleton(User:user)
+                    
                     
                     saveUserInFirestore(userToFirestore:user)
+                    //SavedLocally for persistence
+                    if let encoded = try? JSONEncoder().encode(userLogged) {
+                        UserDefaults.standard.set(encoded, forKey: "userId")
+                        print("sessionPersistence SAVED")
+                    }
                     self.isLoggedIn=true
+                    
                     
                     
                     //self.shouldShowMainView = true

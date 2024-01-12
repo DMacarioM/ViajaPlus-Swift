@@ -9,10 +9,31 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    @State private var isLoggedIn = false //Se modifica con @Binding desde el login y register
+    @State var isLoggedIn : Bool
     //TODO: ? cambiar a false o leer de systempreferences
-    @State private var userLogged = User(userId: "", email: "", password: "", displayName: "", profilePictureUrl: nil)
-    //@State private var userLogged = User(userId: "IORa4wRN39VuwjFGNEIB9RV0W053", email: "juanw@gmail.com", password: "123456", displayName: "Juan", profilePictureUrl: nil)
+    @State var userLogged = User(userId: "", email: "", password: "", displayName: "", profilePictureUrl: nil)
+    //@State var userLogged = User(userId: "IORa4wRN39VuwjFGNEIB9RV0W053", email: "juanw@gmail.com", password: "123456", displayName: "Juan", profilePictureUrl: nil)
+
+    
+    //PERSISTENCIA DE DATOS
+    init() {
+        if let savedUserData = UserDefaults.standard.object(forKey: "userId") as? Data {
+            if let decodedUser = try? JSONDecoder().decode(User.self, from: savedUserData) {
+                self.userLogged = decodedUser
+                self.isLoggedIn = true
+                
+                print("sessionPersistence FOUND")
+            } else {
+                self.isLoggedIn = false
+                
+                print("sessionPersistence NOT FOUND")
+            }
+        } else {
+            self.isLoggedIn = false
+            
+            print("sessionPersistence NOT FOUND")
+        }
+    }
 
     
     var body: some View {
@@ -33,19 +54,43 @@ struct MainView: View {
                                         .foregroundColor(.white).tint(.gray)
                                 }
                     
-                            ProfileView(userLogged: $userLogged)
+                            ProfileView(isLoggedIn: $isLoggedIn, userLogged: $userLogged)
                                 .tabItem{
                                     Label("Profile", systemImage: "square.and.pencil")
                                         .foregroundColor(.white).tint(.gray)
                                 }
                         }
             }
+            
            
         } else {
             LoginView(isLoggedIn: $isLoggedIn, userLogged: $userLogged)
+            
+            
         }
     }
+    
+    
+    //Logic, but not used here, it's on login success and logout button pasted
+    func sessionPersistence() {
+        if isLoggedIn {
+            if let encoded = try? JSONEncoder().encode(userLogged) {
+                UserDefaults.standard.set(encoded, forKey: "userId")
+                print("sessionPersistence SAVED")
+            }
+        } else {
+            UserDefaults.standard.removeObject(forKey: "userId")
+            
+            print("sessionPersistence REMOVED")
+        }
+    }
+
+    
+    
+    
 }
+
+
 
 
 

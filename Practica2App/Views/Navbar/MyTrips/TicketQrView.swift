@@ -15,40 +15,50 @@ struct TicketQrView: View {
     @State private var showMap = false
 
     var body: some View {
-        ScrollView {
-            VStack {
-                // Display ticket details
-                Text("Fecha de viaje: \(ticket.travelDate, formatter: itemFormatter)")
-                Text("Hora de salida: \(ticket.departureTime, formatter: timeFormatter)")
-                Text("Origen: \(ticket.originCity)")
-                // More ticket details here...
-
-                // Display QR Code
-                if let qrImage = generateQRCode(ticket: ticket) {
-                    Image(uiImage: qrImage)
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 350, height: 350)
-                } else {
-                    Image(systemName: "xmark.circle")
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 350, height: 350)
-                }
-
-                // Checkbox
-                Toggle("Mostrar en mapa", isOn: $showMap)
-                    .padding()
-                
-                // MapView (conditional based on the checkbox)
-                if showMap {
-                    MapView(ticket: ticket)
-                        .frame(height: UIScreen.main.bounds.height * 0.6) // Max 60% of the screen height
+        
+        NavigationView{
+            
+            
+            ScrollView {
+                VStack {
+                    
+                    
+                    // Display QR Code
+                    if let qrImage = generateQRCode(ticket: ticket) {
+                        Image(uiImage: qrImage)
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 350, height: 350)
+                    } else {
+                        Image(systemName: "xmark.circle")
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 350, height: 350)
+                    }
+                    
+                    Text("Trvale date: \(ticket.travelDate, formatter: itemFormatter)")
+                    Text("Departure time: \(ticket.departureTime, formatter: timeFormatter)")
+                    Text("Origen: \(ticket.originCity)")
+                    Text("Destiny: \(ticket.destinationCity)")
+                    
+                    // Checkbox
+                    Toggle("Mostrar en mapa", isOn: $showMap)
+                        .padding()
+                    
+                    // MapView (conditional based on the checkbox)
+                    if showMap {
+                        MapView(ticket: ticket, deltaMap: 3.0)
+                            .frame(height: UIScreen.main.bounds.height * 0.6) // Max 60% of the screen height
+                    }
                 }
             }
+            
+            
         }
+        .navigationTitle("Ticket details")
+
     }
     
     func generateQRCode(ticket: Ticket) -> UIImage? {

@@ -120,10 +120,14 @@ struct LoginView: View {
                                    let profilePictureUrl = data["profilePictureUrl"] as? String {
                                     self.userLogged = User(userId: userId, email: email, password: "", displayName: displayName, profilePictureUrl: profilePictureUrl)
                                 }
-                                //TODO: Guardar el usuario en Singleton
-                                //saveUserSingleton(User:user)
+                                
+                                if let encoded = try? JSONEncoder().encode(userLogged) {
+                                    UserDefaults.standard.set(encoded, forKey: "userId")
+                                    print("sessionPersistence SAVED")
+                                }
                                 
                                 self.isLoggedIn=true
+                                
                                 break
                             }
                         }

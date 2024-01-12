@@ -131,7 +131,7 @@ struct StatusChipView: View {
         if calendar.isDateInToday(travelDate), calculateMinutesSinceMidnight(from:departureTime) > calculateMinutesSinceMidnight(from: current) {
             return "ON TIME"
         } else if current > travelDate {
-            return "OLD"
+            return "GONE"
         } else {
             return ""
         }

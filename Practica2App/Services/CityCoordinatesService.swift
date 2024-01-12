@@ -10,12 +10,12 @@ import MapKit
 
 struct CityCoordinates : Identifiable{
     let id : UUID
-    let ciudad : String
+    let name : String
     let coordinate: CLLocationCoordinate2D
 
     init(ciudad: String, latitude: Double, longitude: Double) {
         self.id = UUID()
-        self.ciudad = ciudad
+        self.name = ciudad
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
     }

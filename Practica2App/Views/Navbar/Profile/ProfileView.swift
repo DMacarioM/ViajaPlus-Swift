@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Binding var isLoggedIn: Bool
     @Binding var userLogged: User
+    
     var body: some View {
-        Text("Hello,\(userLogged.displayName) !")
+        Button("Log out,\(userLogged.displayName) !"){
+            
+            UserDefaults.standard.removeObject(forKey: "userId")
+            
+            print("sessionPersistence REMOVED")
+            
+            userLogged = User(userId: "", email: "", password: "", displayName: "", profilePictureUrl: nil)
+            isLoggedIn = false
+        }
     }
 }
 
 #Preview {
-    ProfileView(userLogged: .constant(User(userId: "", email: "", password: "", displayName: "Juan", profilePictureUrl: nil)))
+    ProfileView(isLoggedIn: .constant(false), userLogged: .constant(User(userId: "", email: "", password: "", displayName: "Juan", profilePictureUrl: nil)))
 }
