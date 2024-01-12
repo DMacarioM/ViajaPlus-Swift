@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440AB7172B50BB2500741EF5 /* FirebaseTicketsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AB7162B50BB2500741EF5 /* FirebaseTicketsService.swift */; };
+		440AB7192B50DD2100741EF5 /* TicketQrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AB7182B50DD2100741EF5 /* TicketQrView.swift */; };
+		440AB71C2B50DE9A00741EF5 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 440AB71B2B50DE9A00741EF5 /* QRCode */; };
+		440AB71E2B50FD7900741EF5 /* BuyTicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AB71D2B50FD7900741EF5 /* BuyTicketsView.swift */; };
+		440AB7202B512BD300741EF5 /* MapVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AB71F2B512BD300741EF5 /* MapVIew.swift */; };
+		440AB7222B512D1500741EF5 /* CityCoordinatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AB7212B512D1500741EF5 /* CityCoordinatesService.swift */; };
 		449A70782B4D7DAA00F28590 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A70772B4D7DAA00F28590 /* Ticket.swift */; };
 		449A707A2B4D7DCC00F28590 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A70792B4D7DCC00F28590 /* User.swift */; };
 		44C6118A2B4CBFBB0068F9DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611892B4CBFBB0068F9DD /* HomeView.swift */; };
 		44C6118E2B4CC1B30068F9DD /* MyTripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */; };
 		44C611902B4CC1C60068F9DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6118F2B4CC1C60068F9DD /* ProfileView.swift */; };
-		44C611942B4CC2150068F9DD /* SelectRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611932B4CC2150068F9DD /* SelectRouteView.swift */; };
 		44C611972B4CCEC50068F9DD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611962B4CCEC50068F9DD /* Route.swift */; };
 		44C6119A2B4CCF0C0068F9DD /* RoutesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611992B4CCF0C0068F9DD /* RoutesService.swift */; };
-		44C6119C2B4CD26C0068F9DD /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6119B2B4CD26C0068F9DD /* TicketService.swift */; };
 		FCC121D62B1CF5E6002D0BF8 /* Practica2AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */; };
 		FCC121D82B1CF5E6002D0BF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */; };
 		FCC121DA2B1CF5E6002D0BF8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D92B1CF5E6002D0BF8 /* Item.swift */; };
@@ -56,15 +60,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		440AB7162B50BB2500741EF5 /* FirebaseTicketsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTicketsService.swift; sourceTree = "<group>"; };
+		440AB7182B50DD2100741EF5 /* TicketQrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQrView.swift; sourceTree = "<group>"; };
+		440AB71D2B50FD7900741EF5 /* BuyTicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketsView.swift; sourceTree = "<group>"; };
+		440AB71F2B512BD300741EF5 /* MapVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVIew.swift; sourceTree = "<group>"; };
+		440AB7212B512D1500741EF5 /* CityCoordinatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCoordinatesService.swift; sourceTree = "<group>"; };
 		449A70772B4D7DAA00F28590 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		449A70792B4D7DCC00F28590 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44C611892B4CBFBB0068F9DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsView.swift; sourceTree = "<group>"; };
 		44C6118F2B4CC1C60068F9DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		44C611932B4CC2150068F9DD /* SelectRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRouteView.swift; sourceTree = "<group>"; };
 		44C611962B4CCEC50068F9DD /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		44C611992B4CCF0C0068F9DD /* RoutesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesService.swift; sourceTree = "<group>"; };
-		44C6119B2B4CD26C0068F9DD /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
 		FCC121D22B1CF5E6002D0BF8 /* Practica2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practica2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practica2AppApp.swift; sourceTree = "<group>"; };
 		FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -93,6 +100,7 @@
 				FCFFE7152B4EC8DF00C9F216 /* FirebaseAnalytics in Frameworks */,
 				FCFFE7192B4EC8DF00C9F216 /* FirebaseAuthCombine-Community in Frameworks */,
 				FCFFE71B2B4EC8DF00C9F216 /* FirebaseDatabase in Frameworks */,
+				440AB71C2B50DE9A00741EF5 /* QRCode in Frameworks */,
 				FCFFE7172B4EC8DF00C9F216 /* FirebaseAuth in Frameworks */,
 				FCFFE71F2B4EC8DF00C9F216 /* FirebaseFirestore in Frameworks */,
 				FCFFE7212B4EC8DF00C9F216 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -148,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				44C611892B4CBFBB0068F9DD /* HomeView.swift */,
-				44C611932B4CC2150068F9DD /* SelectRouteView.swift */,
+				440AB71D2B50FD7900741EF5 /* BuyTicketsView.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -157,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				44C6118D2B4CC1B30068F9DD /* MyTripsView.swift */,
+				440AB7182B50DD2100741EF5 /* TicketQrView.swift */,
+				440AB71F2B512BD300741EF5 /* MapVIew.swift */,
 			);
 			path = MyTrips;
 			sourceTree = "<group>";
@@ -183,7 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				44C611992B4CCF0C0068F9DD /* RoutesService.swift */,
-				44C6119B2B4CD26C0068F9DD /* TicketService.swift */,
+				440AB7162B50BB2500741EF5 /* FirebaseTicketsService.swift */,
+				440AB7212B512D1500741EF5 /* CityCoordinatesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -276,6 +287,7 @@
 				FCFFE71C2B4EC8DF00C9F216 /* FirebaseDatabaseSwift */,
 				FCFFE71E2B4EC8DF00C9F216 /* FirebaseFirestore */,
 				FCFFE7202B4EC8DF00C9F216 /* FirebaseFirestoreCombine-Community */,
+				440AB71B2B50DE9A00741EF5 /* QRCode */,
 			);
 			productName = Practica2App;
 			productReference = FCC121D22B1CF5E6002D0BF8 /* Practica2App.app */;
@@ -351,6 +363,7 @@
 			mainGroup = FCC121C92B1CF5E6002D0BF8;
 			packageReferences = (
 				44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				440AB71A2B50DE9A00741EF5 /* XCRemoteSwiftPackageReference "QRCode" */,
 			);
 			productRefGroup = FCC121D32B1CF5E6002D0BF8 /* Products */;
 			projectDirPath = "";
@@ -397,20 +410,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC121D82B1CF5E6002D0BF8 /* LoginView.swift in Sources */,
-				44C6119C2B4CD26C0068F9DD /* TicketService.swift in Sources */,
+				440AB71E2B50FD7900741EF5 /* BuyTicketsView.swift in Sources */,
 				44C6119A2B4CCF0C0068F9DD /* RoutesService.swift in Sources */,
 				44C611902B4CC1C60068F9DD /* ProfileView.swift in Sources */,
 				44C611972B4CCEC50068F9DD /* Route.swift in Sources */,
 				449A70782B4D7DAA00F28590 /* Ticket.swift in Sources */,
 				FCC122062B1D0603002D0BF8 /* MainView.swift in Sources */,
 				FCC121DA2B1CF5E6002D0BF8 /* Item.swift in Sources */,
+				440AB7202B512BD300741EF5 /* MapVIew.swift in Sources */,
 				449A707A2B4D7DCC00F28590 /* User.swift in Sources */,
-				44C611942B4CC2150068F9DD /* SelectRouteView.swift in Sources */,
 				FCC1220D2B1D17A2002D0BF8 /* RegisterView.swift in Sources */,
 				FCC121D62B1CF5E6002D0BF8 /* Practica2AppApp.swift in Sources */,
 				44C6118A2B4CBFBB0068F9DD /* HomeView.swift in Sources */,
+				440AB7222B512D1500741EF5 /* CityCoordinatesService.swift in Sources */,
 				FCC122082B1D08FE002D0BF8 /* MisClases.swift in Sources */,
+				440AB7172B50BB2500741EF5 /* FirebaseTicketsService.swift in Sources */,
 				44C6118E2B4CC1B30068F9DD /* MyTripsView.swift in Sources */,
+				440AB7192B50DD2100741EF5 /* TicketQrView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +754,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		440AB71A2B50DE9A00741EF5 /* XCRemoteSwiftPackageReference "QRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmrschmidt/QRCode";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -749,6 +773,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		440AB71B2B50DE9A00741EF5 /* QRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 440AB71A2B50DE9A00741EF5 /* XCRemoteSwiftPackageReference "QRCode" */;
+			productName = QRCode;
+		};
 		FCFFE7142B4EC8DF00C9F216 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

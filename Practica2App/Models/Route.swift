@@ -24,7 +24,7 @@ struct Route: Hashable, Codable, Identifiable{
     }
     func departureTimeText() -> String {
         let formatter = DateFormatter()
-       formatter.dateFormat = "hh:mm"
+       formatter.dateFormat = "HH:mm"
        return formatter.string(from: departureTime)
 
     }
@@ -32,7 +32,7 @@ struct Route: Hashable, Codable, Identifiable{
     
     func arrivalTimeText() -> String {
         let formatter = DateFormatter()
-       formatter.dateFormat = "hh:mm"
+       formatter.dateFormat = "HH:mm"
        return formatter.string(from: arrivalTime)
 
     }

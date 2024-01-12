@@ -24,15 +24,17 @@ struct HomeView: View {
     @State private var showAlert = false
     @State private var errorText = ""
     
-    @State private var ticket1: Ticket?
-    @State private var ticket2: Ticket? // Solo se usa si isRoundTrip es true
+    
+    @State var ticketsBuy : [Ticket] = []
     
     //SORTING VARIABLE
     var sorterCheaper = "Earlier"
     var sorterString = ["Earlier", "Cheaper"]
     @State var selectedSorter = "Earlier"
     
-    
+    //NAVIGATE
+    @State private var navigateToConfirmation = false
+
     
     var body: some View {
         NavigationView {
@@ -71,7 +73,6 @@ struct HomeView: View {
                 }
                 
                 
-                /** TODO: RONALD
                 Section(header: Text(isRoundTrip ? "Departure and Arrival Time" : "Departure Time")) {
                     
                     Picker("Order by", selection: $selectedSorter) {
@@ -84,7 +85,7 @@ struct HomeView: View {
 
                     
                     
-                            Picker("Select Route", selection: $selectedRoute1) {
+                            Picker("Going", selection: $selectedRoute1) {
                                 Text("").tag("") // This line adds an empty tag for the nil case
                                 ForEach(
                                         RoutesService.shared.getRoutes(sorterType: selectedSorter, startCity: selectedStartCity, endCity: selectedEndCity)
@@ -106,7 +107,7 @@ struct HomeView: View {
                      
 
                             if isRoundTrip {
-                                Picker("Return Route", selection: $selectedRoute2) {
+                                Picker("Return", selection: $selectedRoute2) {
                                     Text("").tag("") // This line adds an empty tag for the nil case
                                     ForEach(
                                             RoutesService.shared.getRoutes(sorterType: selectedSorter, startCity: selectedEndCity , endCity: selectedStartCity)
@@ -128,23 +129,26 @@ struct HomeView: View {
                                  
                             }
                         }
-                */
+                
+            
                 Button("Buscar el mejor precio !!") {
-                   
+                    
                     // Primero, realiza la validación de las ciudades
                     if selectedStartCity == selectedEndCity {
                         errorText = "Por favor, elige ciudades de origen y destino diferentes."
                         showAlert = true
                     } else {
                         // Luego, si pasa la validación, crea los tickets
-                        createTickets()
+                        navigateToConfirmation = createTickets()
                     }
-
+                    
                 }
                 .foregroundColor(.white)
                 .frame(width: 300, height: 50)
                 .background(Color.blue)
                 .cornerRadius(10)
+                   
+                
             }
             .navigationBarTitle("ViajaPlus")
             .alert(isPresented: $showAlert) {
@@ -157,8 +161,11 @@ struct HomeView: View {
             }
         }
         .alert(isPresented: $showAlert) {
-                   Alert(title: Text("Error"), message: Text(errorText), dismissButton: .default(Text("OK")))
-               }
+           Alert(title: Text("Error"), message: Text(errorText), dismissButton: .default(Text("OK")))
+        }
+        .navigationDestination(isPresented: $navigateToConfirmation) {
+            BuyTicketsView(tickets: ticketsBuy)
+        }
               
     }
     
@@ -166,84 +173,73 @@ struct HomeView: View {
     
     
     
-    func createTickets() {
-        /**
-            // Reset tickets
-            ticket1 = nil
-            ticket2 = nil
+    func createTickets() -> Bool{
 
-            if selectedStartCity == selectedEndCity {
-                errorText = "Origen y destino no pueden ser iguales."
-                showAlert = true
-                return
-            }
-            
-            if selectedRoute1 == "" {
-                showAlert = true
-                errorText = "Select a going hour"
-                return
-            }
+        ticketsBuy.removeAll()
+
+        if selectedStartCity == selectedEndCity {
+            errorText = "Origen y destino no pueden ser iguales."
+            showAlert = true
+            return false
+        }
         
+        if selectedRoute1 == "" {
+            showAlert = true
+            errorText = "Select a going hour"
+            return false
+        }
+    
         if selectedRoute2 == "" && isRoundTrip {
             showAlert = true
             errorText = "Select a back hour"
-            return
+            return false
         }
         
-        
+    
         print([selectedSorter, selectedStartCity, selectedEndCity])
-        let route1 : Route? = RoutesService.shared.getRoutes(sorterType: selectedSorter, startCity: selectedEndCity , endCity:                                           selectedStartCity).first(where: { $0.textTimeAndprice() == selectedRoute1 })
+        let route1 : Route? = RoutesService.shared.routes.first(where: { $0.textTimeAndprice() == selectedRoute1 })
         
+        
+        // Crear el ticket de ida
+        let newTicket1 = Ticket(
+          ticketId: UUID().uuidString,
+          userId: userLogged.userId,
+          purchaseDate: Date(),
+          travelDate: selectedDate1,
+          originCity: route1?.originCity ?? "",
+          destinationCity: route1?.destinationCity ?? "",
+          departureTime: route1?.departureTime ?? Date(),
+          arrivalTime: route1?.arrivalTime ?? Date(),
+          price: route1?.price ?? 0
+        )
+        
+        ticketsBuy.append(newTicket1)
+        
+        
+        
+        // Si es viaje redondo, crear el ticket de regreso
+        if isRoundTrip && selectedRoute2 != "" {
+            let route2 : Route? = RoutesService.shared.routes.first(where: { $0.textTimeAndprice() == selectedRoute2 })
 
-            // Crear el ticket de ida
-            let newTicket1 = Ticket(
+            let newTicket2 = Ticket(
               ticketId: UUID().uuidString,
-              userId: userLogged.email,
+              userId: userLogged.userId,
               purchaseDate: Date(),
-              travelDate: selectedDate1,
-              originCity: route1?.originCity ?? "",
-              destinationCity: route1?.destinationCity ?? "",
-              departureTime: route1?.departureTime ?? Date(),
-              arrivalTime: route1?.arrivalTime ?? Date(),
-              price: route1?.price ?? 0
+              travelDate: selectedDate2,
+              originCity: route2?.originCity ?? "",
+              destinationCity: route2?.destinationCity ?? "",
+              departureTime: route2?.departureTime ?? Date(),
+              arrivalTime: route2?.arrivalTime ?? Date(),
+              price: route2?.price ?? 0
             )
+            ticketsBuy.append(newTicket2)
 
-            // Si es viaje redondo, crear el ticket de regreso
-            if isRoundTrip && selectedRoute2 != "" {
-                let route2 : Route? = RoutesService.shared.getRoutes(sorterType: selectedSorter, startCity: selectedEndCity ,                    endCity:selectedStartCity ).first(where: { $0.textTimeAndprice() == selectedRoute2 })
-                
-                
-              let newTicket2 = Ticket(
-                  ticketId: UUID().uuidString,
-                  userId: userLogged.email,
-                  purchaseDate: Date(),
-                  travelDate: selectedDate2,
-                  originCity: route2?.originCity ?? "",
-                  destinationCity: route2?.destinationCity ?? "",
-                  departureTime: route2?.departureTime ?? Date(),
-                  arrivalTime: route2?.arrivalTime ?? Date(),
-                  price: route2?.price ?? 0
-              )
-              self.ticket2 = newTicket2
-                
-                errorText = self.ticket2?.description() ?? ""
-            }
-
-              // Asigna el ticket de ida a la variable de estado
-              self.ticket1 = newTicket1
-        
-        
-            debugPrint(route1?.textTimeAndprice() ?? "nul route 2")
-            print(route1?.textTimeAndprice() ?? "null route 2")
-
-        
-            errorText += self.ticket1?.description() ?? ""
-        showAlert=true
-
-
-            // pasar a la siguiente vista
-         */
+            
         }
+
+
+        return ticketsBuy.count > 0 // Return true if at least one ticket was created
+    }
     
     
 }

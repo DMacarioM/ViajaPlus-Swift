@@ -9,7 +9,7 @@ import Foundation
 
 class RoutesService {
     static let shared = RoutesService()
-    private var routes: [Route] = []
+    var routes: [Route] = []
     private var routesOrderByCheaper: [Route] = []
 
     init() {
