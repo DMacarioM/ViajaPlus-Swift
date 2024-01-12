@@ -11,8 +11,8 @@ struct User : Encodable, Decodable {
     let userId: String
     let email: String
     let password: String
-    let displayName: String
-    let profilePictureUrl: String?
+    var displayName: String
+    var profilePictureUrl: String?
 
     init(userId: String, email: String, password: String, displayName: String, profilePictureUrl: String?) {
         self.userId = userId
