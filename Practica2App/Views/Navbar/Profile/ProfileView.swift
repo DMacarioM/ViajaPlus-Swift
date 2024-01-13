@@ -14,7 +14,7 @@ struct ProfileView: View {
     @Binding var userLogged: User
     
     @State private var inputUrl: String = ""
-    @State private var inputUsername: String = ""
+    //@State private var inputUsername: String = ""
     
     @State private var showingAlert = false
     @State private var alertTitle = ""
@@ -54,9 +54,10 @@ struct ProfileView: View {
                 .padding(.top, 20)
             
             
-            TextField("Username", text: $inputUsername)
+           /* TextField("Username", text: $inputUsername)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.top,30).frame(width: 200)
+            
             
             Button(action: {
                 //Cambiar displayName de firestore y del usuario actual
@@ -78,12 +79,12 @@ struct ProfileView: View {
             }.padding(10).alert(isPresented: $showingAlert) {
                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }.cornerRadius(2)
-            
+            */
             
             
             TextField("Introduce una nueva URL de perfil", text: $inputUrl)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding().frame(width: 300).padding(.top,30)
+                .padding().frame(width: 300).padding(.top,1)
             
             Button(action: {
                 //Cambiar url de firestore y del usuario actual
@@ -121,7 +122,7 @@ struct ProfileView: View {
                 isLoggedIn = false
             }){
                 Text("Log out")
-            }.foregroundColor(.white).frame(width: 150.0,height: 50).background(Color.blue).cornerRadius(10).padding(.top, 20)
+            }.foregroundColor(.white).frame(width: 150.0,height: 50).background(Color.blue).cornerRadius(10).padding(.top, 70)
             
         }
     }

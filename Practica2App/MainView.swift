@@ -26,7 +26,7 @@ struct MainView: View {
                 self.userLogged = decodedUser
                 self.isLoggedIn = true
                 
-                print("sessionPersistence FOUND")
+                print("sessionPersistence FOUND + \(decodedUser)")
                 print("\(userLogged)")
             } else {
                 self.isLoggedIn = false

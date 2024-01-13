@@ -94,7 +94,7 @@ struct LoginView: View {
                 self.errorText = error.localizedDescription
 
                 showAlert = true
-                errorText = "Error en la autenticación"
+                errorText = "Usuario o Contraseña Incorrectos"
             } else {
                 // Manejo del éxito del inicio de sesión
                 guard let user = authResult?.user else { return }
@@ -112,16 +112,30 @@ struct LoginView: View {
                             for document in querySnapshot!.documents {
                                 print("\(document.documentID) => \(document.data())")
                                 let data = document.data()
+
+                                    let userId = data["userId"] as? String
+                                    let email = data["email"] as? String
+                                    let displayName = data["displayName"] as? String
+                                    let profilePictureUrl = data["profilePictureUrl"] as? String
+
+
+                                    if let userId = userId,
+                                       let email = email,
+                                       let displayName = displayName{
+                                        if let profilePictureUrl = profilePictureUrl{
+                                            self.userLogged = User(userId: userId, email: email, password: "", displayName: displayName, profilePictureUrl: profilePictureUrl)
+                                        }else{
+                                            self.userLogged = User(userId: userId, email: email, password: "", displayName: displayName, profilePictureUrl: "")
+                                        }
+                                    }
                                 
-                                if let userId = data["userId"] as? String,
-                                   let email = data["email"] as? String,
-                                   let displayName = data["displayName"] as? String,
-                                   let profilePictureUrl = data["profilePictureUrl"] as? String {
-                                    self.userLogged = User(userId: userId, email: email, password: "", displayName: displayName, profilePictureUrl: profilePictureUrl)
-                                }
+                    
+                                
                                 
                                 if let encoded = try? JSONEncoder().encode(userLogged) {
                                     UserDefaults.standard.set(encoded, forKey: "userId")
+                                    print("user ---- \(userLogged)")
+                                    print("\(encoded)")
                                     print("sessionPersistence SAVED")
                                 }
                                 
