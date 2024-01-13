@@ -39,15 +39,15 @@ struct MapView: View {
             }
             .onAppear {
                 
-                locationManager.requestAlwaysAuthorization()
-                var currentPosition = locationManager.requestLocation()
+                //locationManager.requestAlwaysAuthorization()
+                //var currentPosition = locationManager.requestLocation()
                 
                 citiesData.append(CityCoordinatesService().getCities(searchCity: ticket.originCity))
                 citiesData.append(CityCoordinatesService().getCities(searchCity: ticket.destinationCity))
                 
                 
                 region = MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: 37.9922, longitude: -1.1307), // Placeholder
+                    center: citiesData[0].coordinate, // Placeholder
                     span: MKCoordinateSpan(latitudeDelta: deltaMap, longitudeDelta: deltaMap)
                 )
                 
