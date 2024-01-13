@@ -20,6 +20,8 @@
 		44C611902B4CC1C60068F9DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6118F2B4CC1C60068F9DD /* ProfileView.swift */; };
 		44C611972B4CCEC50068F9DD /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611962B4CCEC50068F9DD /* Route.swift */; };
 		44C6119A2B4CCF0C0068F9DD /* RoutesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C611992B4CCF0C0068F9DD /* RoutesService.swift */; };
+		FC59B0202B51D37A00ECE429 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FC59B01F2B51D37A00ECE429 /* URLImage */; };
+		FC59B0222B51D37A00ECE429 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = FC59B0212B51D37A00ECE429 /* URLImageStore */; };
 		FCC121D62B1CF5E6002D0BF8 /* Practica2AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D52B1CF5E6002D0BF8 /* Practica2AppApp.swift */; };
 		FCC121D82B1CF5E6002D0BF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D72B1CF5E6002D0BF8 /* LoginView.swift */; };
 		FCC121DA2B1CF5E6002D0BF8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC121D92B1CF5E6002D0BF8 /* Item.swift */; };
@@ -96,7 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC59B0222B51D37A00ECE429 /* URLImageStore in Frameworks */,
 				FCFFE71D2B4EC8DF00C9F216 /* FirebaseDatabaseSwift in Frameworks */,
+				FC59B0202B51D37A00ECE429 /* URLImage in Frameworks */,
 				FCFFE7152B4EC8DF00C9F216 /* FirebaseAnalytics in Frameworks */,
 				FCFFE7192B4EC8DF00C9F216 /* FirebaseAuthCombine-Community in Frameworks */,
 				FCFFE71B2B4EC8DF00C9F216 /* FirebaseDatabase in Frameworks */,
@@ -288,6 +292,8 @@
 				FCFFE71E2B4EC8DF00C9F216 /* FirebaseFirestore */,
 				FCFFE7202B4EC8DF00C9F216 /* FirebaseFirestoreCombine-Community */,
 				440AB71B2B50DE9A00741EF5 /* QRCode */,
+				FC59B01F2B51D37A00ECE429 /* URLImage */,
+				FC59B0212B51D37A00ECE429 /* URLImageStore */,
 			);
 			productName = Practica2App;
 			productReference = FCC121D22B1CF5E6002D0BF8 /* Practica2App.app */;
@@ -364,6 +370,7 @@
 			packageReferences = (
 				44C6119F2B4D4F000068F9DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				440AB71A2B50DE9A00741EF5 /* XCRemoteSwiftPackageReference "QRCode" */,
+				FC59B01E2B51D10400ECE429 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = FCC121D32B1CF5E6002D0BF8 /* Products */;
 			projectDirPath = "";
@@ -772,6 +779,14 @@
 				minimumVersion = 10.19.1;
 			};
 		};
+		FC59B01E2B51D10400ECE429 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -779,6 +794,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 440AB71A2B50DE9A00741EF5 /* XCRemoteSwiftPackageReference "QRCode" */;
 			productName = QRCode;
+		};
+		FC59B01F2B51D37A00ECE429 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC59B01E2B51D10400ECE429 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		FC59B0212B51D37A00ECE429 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC59B01E2B51D10400ECE429 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
 		};
 		FCFFE7142B4EC8DF00C9F216 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

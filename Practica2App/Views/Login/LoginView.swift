@@ -14,7 +14,7 @@ import Firebase
 struct LoginView: View {
     @State private var showAlert = false
     @State private var errorText = ""
-    //@Environment(\.dismiss) var dismiss
+    
     @State private var selection: Int? = nil
     
     @State private var email = ""
@@ -92,8 +92,7 @@ struct LoginView: View {
             if let error = error {
                 self.showAlert = true
                 self.errorText = error.localizedDescription
-                // Aquí puedes agregar lógica para manejar tipos específicos de errores
-                
+
                 showAlert = true
                 errorText = "Error en la autenticación"
             } else {

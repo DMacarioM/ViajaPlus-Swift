@@ -22,7 +22,7 @@ struct RegisterView: View {
     @State private var errorText = ""
     @Environment(\.dismiss) var dismiss
     
-    @State private var username = "" //(TODO: Singleton)
+    @State private var username = "" 
     @State private var password = ""
     @State private var retypedpassword = ""
     @State private var email = ""
@@ -32,9 +32,6 @@ struct RegisterView: View {
     @State private var wrongEmail = 0
     @State private var wrongPassword = 0
     @State private var wrongRetypedPassword = 0
-    
-    //Bool para navegar al MainView
-    @State private var shouldShowMainView = false
 
     var body: some View {
         NavigationView{
@@ -100,9 +97,6 @@ struct RegisterView: View {
                         }
                         
                     }
-                    /*NavigationLink(destination: MainView(), isActive: $shouldShowMainView) {
-                        EmptyView()
-                    }*/
                 }
             }
         }.navigationBarHidden(true)
@@ -135,7 +129,6 @@ struct RegisterView: View {
                     
                     
                     
-                    //self.shouldShowMainView = true
                 }
         }
     }
@@ -174,7 +167,7 @@ struct RegisterView: View {
         
         // Añade el documento a la colección "users"
         //Se guarda con el displayName para evitar usuarios duplicados
-        db.collection("Users").document(userToFirestore.displayName).setData(userDict) { err in
+        db.collection("Users").document(userToFirestore.userId).setData(userDict) { err in
             if let err = err {
                 print("Error writing BBDD: \(err)")
                 showAlert = true

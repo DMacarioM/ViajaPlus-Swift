@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Firebase
 
 struct MainView: View {
     @State var isLoggedIn : Bool
@@ -14,6 +15,9 @@ struct MainView: View {
     @State var userLogged = User(userId: "", email: "", password: "", displayName: "", profilePictureUrl: nil)
     //@State var userLogged = User(userId: "IORa4wRN39VuwjFGNEIB9RV0W053", email: "juanw@gmail.com", password: "123456", displayName: "Juan", profilePictureUrl: nil)
 
+    @State private var showingAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     //PERSISTENCIA DE DATOS
     init() {
@@ -23,6 +27,7 @@ struct MainView: View {
                 self.isLoggedIn = true
                 
                 print("sessionPersistence FOUND")
+                print("\(userLogged)")
             } else {
                 self.isLoggedIn = false
                 
@@ -59,6 +64,8 @@ struct MainView: View {
                                     Label("Profile", systemImage: "square.and.pencil")
                                         .foregroundColor(.white).tint(.gray)
                                 }
+                        }.alert(isPresented: $showingAlert) {
+                            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                         }
             }
             
